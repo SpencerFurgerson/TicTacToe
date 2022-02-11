@@ -23,10 +23,10 @@ void DisplayBoard(Board *Table) {
   int index = 0;
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      if (Table.ray[i][j] == 1) {
+      if (Table->ray[i][j] == 1) {
         move[index] = 'X';
       }
-      else if (Table.ray[i][j] == 2) {
+      else if (Table->ray[i][j] == 2) {
         move[index] = 'O';
       }
       else {
@@ -35,14 +35,19 @@ void DisplayBoard(Board *Table) {
       index++;
     }
   }
-  cout << moves[0] << "|" << moves[1] << "|" << moves[2] << "|" << endl;
-  cout << "--|--|--" << endl;
-  cout << moves[3] << "|" << moves[4] << "|" << moves[5] << "|" << endl;
-  cout << "--|--|--" << endl;
-  cout << moves[6] << "|" << moves[7] << "|" << moves[8] << "|" << endl;
+  cout << move[0] << " |" << move[1] << "|" << move[2] << endl;
+  cout << "--|-|--" << endl;
+  cout << move[3] << " |" << move[4] << "|" << move[5] << endl;
+  cout << "--|-|--" << endl;
+  cout << move[6] << " |" << move[7] << "|" << move[8] << endl;
   cout << endl;
 }
 
+void PlaceMarker(Board *Table, int board_value, int row, int col) {
+
+  Table->ray[row][col] = board_value;
+
+}
 
 void GetPlayerChoice(int Player, Board *Table) {
 
@@ -179,14 +184,43 @@ void GetPlayerChoice(int Player, Board *Table) {
 
   }
 
-void PlaceMarker(Board *Table, int board_value, int row, int col) {
-
-  Table->ray[row][col] = board_value;
-
 }
+
 
 int main() {
 
   CreateBoard();
+  Board Table;
+
+  int Player = 1;
+  int turns = 0;
+
+
+  while (turns < 9) {
+    cout << endl;
+
+    cout << "Player " << Player << "'s turn!" << endl;
+
+    DisplayBoard(&Table);
+
+    GetPlayerChoice(Player,&Table);
+
+
+    if (Player == 1) {
+      Player = 2;
+    }
+
+    else {
+      Player = 1;
+    }
+
+    turns++;
+
+  }
+
+  DisplayBoard(&Table);
+
+
+  return 0;
 
 }
