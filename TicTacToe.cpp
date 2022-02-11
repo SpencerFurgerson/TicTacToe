@@ -43,6 +43,12 @@ void DisplayBoard(Board *Table) {
   cout << endl;
 }
 
+void PlaceMarker(Board *Table, int board_value, int row, int col) {
+
+  Table->ray[row][col] = board_value;
+
+}
+
 int main() {
 
   CreateBoard();
