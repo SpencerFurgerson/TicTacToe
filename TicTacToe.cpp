@@ -18,46 +18,30 @@ Board *CreateBoard() {
 
 }
 
-void DisplayBoard(Board Table) {
-
-  char plays[9];
-
-  int count = 0;
-
+void DisplayBoard(Board *Table) {
+  char move[9];
+  int index = 0;
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-
-      if (Table.ray[i][j] == 0) {
-
-        plays[count] = ' ';
-
-      }
       if (Table.ray[i][j] == 1) {
-
-        plays[count] = 'X';
-
+        move[index] = 'X';
       }
-      if (Table.ray[i][j] == 2) {
-
-        plays[count] = 'O';
-
+      else if (Table.ray[i][j] == 2) {
+        move[index] = 'O';
       }
-
-      count++;
-
+      else {
+        move[index] = ' ';
+      }
+      index++;
     }
-
   }
-
-  cout << " "<< plays[0] << "|" << plays[1] << "|" << plays[2] << " " << endl;
-  cout << "--|-|-- " << endl;
-  cout << " "<< plays[3] << "|" << plays[4] << "|" << plays[5] << " " << endl;
-  cout << "--|-|-- " << endl;
-  cout << " "<< plays[6] << "|" << plays[7] << "|" << plays[8] << " " << endl;
+  cout << moves[0] << "|" << moves[1] << "|" << moves[2] << "|" << endl;
+  cout << "--|--|--" << endl;
+  cout << moves[3] << "|" << moves[4] << "|" << moves[5] << "|" << endl;
+  cout << "--|--|--" << endl;
+  cout << moves[6] << "|" << moves[7] << "|" << moves[8] << "|" << endl;
   cout << endl;
-
 }
-
 
 int main() {
 
