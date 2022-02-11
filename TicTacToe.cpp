@@ -43,6 +43,7 @@ void DisplayBoard(Board *Table) {
   cout << endl;
 }
 
+
 void GetPlayerChoice(int Player, Board *Table) {
 
   cout << "Where will you move?" << endl;
@@ -178,6 +179,9 @@ void GetPlayerChoice(int Player, Board *Table) {
 
   }
 
+void PlaceMarker(Board *Table, int board_value, int row, int col) {
+
+  Table->ray[row][col] = board_value;
 
 }
 
