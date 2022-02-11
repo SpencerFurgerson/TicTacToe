@@ -2,6 +2,8 @@
 #include <math.h>
 using namespace std;
 
+// Board struct that defines a 3x3 empty array
+
 struct Board {
   int ray[3][3] =
   {
@@ -11,12 +13,16 @@ struct Board {
   };
 };
 
+// This function creates a Board struct and passes it to main
+
 Board *CreateBoard() {
 
   Board *Table = new Board();
   return Table;
 
 }
+
+//Display the board based on if a space has been played or is still empty
 
 void DisplayBoard(Board *Table) {
   char move[9];
@@ -43,11 +49,15 @@ void DisplayBoard(Board *Table) {
   cout << endl;
 }
 
+//Place the Player's respective marker on the space which they select
+
 void PlaceMarker(Board *Table, int board_value, int row, int col) {
 
   Table->ray[row][col] = board_value;
 
 }
+
+// Ask the player which space like would like to cover and pass it to PlaceMarker
 
 void GetPlayerChoice(int Player, Board *Table) {
 
@@ -70,7 +80,6 @@ void GetPlayerChoice(int Player, Board *Table) {
     switch (move) {
 
       case 1:
-        cout << Table->ray[0][0] << endl;
         if (Table->ray[0][0] != 0) {
 
           cout << "That spot is taken!" << endl;
@@ -187,6 +196,7 @@ void GetPlayerChoice(int Player, Board *Table) {
 }
 
 
+
 int main() {
 
   CreateBoard();
@@ -195,6 +205,7 @@ int main() {
   int Player = 1;
   int turns = 0;
 
+  //while loop for the game
 
   while (turns < 9) {
     cout << endl;
@@ -222,5 +233,6 @@ int main() {
 
 
   return 0;
+
 
 }
